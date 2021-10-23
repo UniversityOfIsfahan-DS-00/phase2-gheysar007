@@ -24,6 +24,7 @@ namespace LinkedList
             switch (KP.Key)
             {
                 case ConsoleKey.NumPad0: Console.Clear();
+                    
                     Console.WriteLine("Enter Row: ");
                     int Row = int.Parse(Console.ReadLine());
                     Console.Clear();
@@ -36,6 +37,16 @@ namespace LinkedList
                     RowList[Row].Insert(Value, Column);
                     break;
 
+                case ConsoleKey.NumPad1:
+                    Console.Clear();
+                    Console.WriteLine("Enter Row: ");
+                    Row = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Console.WriteLine("Enter column: ");
+                    Column = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    RowList[Row].Delete(Column);
+                    break;
                 default:
                     break;
             }

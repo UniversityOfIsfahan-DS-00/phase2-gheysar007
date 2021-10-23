@@ -22,7 +22,7 @@ namespace LinkedList
 
             public int Value { get { return _value; } }
 
-            public int ColumnIndex { get { return _columnIndex; } }
+            public int ColumnIndex { get { return _columnIndex; } set { _columnIndex = value; } }
 
             public Node Next { get { return _next; } set { _next = value; } }
         }
@@ -50,7 +50,7 @@ namespace LinkedList
             }
             else
             {
-                _tail.Next = newest;    
+                _tail.Next = newest;
             }
             _tail = newest;
             _size++;
@@ -60,6 +60,12 @@ namespace LinkedList
             if (Column == 0)
             {
                 AddFirst(Value, Column);
+                Node search = _head.Next;
+                while (search != null)
+                {
+                    search.ColumnIndex++;
+                    search = search.Next;
+                }
             }
             else
             {
@@ -76,8 +82,53 @@ namespace LinkedList
                 }
                 search.Next = newest;
                 _size++;
+                search = search.Next.Next;
+                while (search != null)
+                {
+                    search.ColumnIndex++;
+                    search = search.Next;
+                }
             }
-            
+
+        }
+        public void Delete(int column)
+        {
+            if (column == 0)
+            {
+                _head = _head.Next;
+                Node search = _head;
+                while (search != null)
+                {
+                    search.ColumnIndex--;
+                    search = search.Next;
+                }
+            }
+            else
+            {
+                int index = 1;
+                Node search = _head;
+                while (index++ != column)
+                {
+                    search = search.Next;
+                }
+                if (Size == column + 1)
+                {
+                    _tail = search;
+                }
+                search.Next = search.Next.Next;
+                search = search.Next;
+                while (search != null)
+                {
+                    search.ColumnIndex--;
+                    search = search.Next;
+                }
+            }
+
+            _size--;
+            if (Size == 0)
+            {
+                _tail = null;
+            }
         }
     }
 }
