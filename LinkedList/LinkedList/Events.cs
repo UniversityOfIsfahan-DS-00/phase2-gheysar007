@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,14 @@ namespace LinkedList
             {
                 item.Print(printType);
             }
-            
+        }
+        public void save_file()
+        {
+            File.Delete(FilePath);
+            foreach (var item in RowList)
+            {
+                File.AppendAllText(FilePath, item.SaveFile() + "\r\n");
+            }
         }
     }
 }

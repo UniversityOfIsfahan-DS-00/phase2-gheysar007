@@ -12,15 +12,16 @@ namespace LinkedList
 {
     partial class Program
     {
+        string FilePath;
         public string[] Reading()
         {
             Console.Write("Enter the name of CSV file to read: ");
-            string name = Console.ReadLine();
+            string FileName = Console.ReadLine();
             string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string directory = System.IO.Path.GetDirectoryName(path);
-            string result = directory.Remove(directory.Length - 31) + name + ".csv";
+            FilePath = directory.Remove(directory.Length - 31) + FileName + ".csv";
 
-            string[] File = System.IO.File.ReadAllLines(result);
+            string[] File = System.IO.File.ReadAllLines(FilePath);
 
             
             return File;

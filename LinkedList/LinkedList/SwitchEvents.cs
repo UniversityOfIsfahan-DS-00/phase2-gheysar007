@@ -87,6 +87,11 @@ namespace LinkedList
                     Print(PrintType);
                     break;
 
+                case ConsoleKey.NumPad5:
+                    Console.Clear();
+                    save_file();
+                    break;
+
                 default:
                     break;
             }

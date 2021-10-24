@@ -202,6 +202,49 @@ namespace LinkedList
                 search = search.Next;
             }
         }
+        public string SaveFile()
+        {
+            string AppendString = "";
+            Node search = _head;
+            if (search == null)
+            {
+                for (int i = 0; i < NumberOfCols; i++)
+                {
+                    AppendString += "0,";
+                }
+            }
+            else
+            {
+                int repet = 0;
+                int i = 0;
+                int index;
+                bool IsEnd = false;
+                while (repet++ <= Size + 1)
+                {
+                    if (search == null)
+                    {
+                        index = NumberOfCols;
+                        IsEnd = true;
+                    }
+                    else
+                    {
+                        index = search.ColumnIndex;
+                    }
+                    for (; i < index; i++)
+                    {
+                        AppendString += "0,";
+                    }
+                    if (IsEnd)
+                    {
+                        break;
+                    }
+                    AppendString += $"{search.Value},";
+                    search = search.Next;
+                    i++;
+                }
+            }
+            return AppendString.Remove(AppendString.Length - 1);
+        }
     }
 }
 
