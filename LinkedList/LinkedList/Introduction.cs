@@ -27,8 +27,9 @@ namespace LinkedList
 
                     if (i != "0")
                     {
-                        RowList[NumbersOfRow].AddLast(int.Parse(i), Index++);
+                        RowList[NumbersOfRow].AddLast(int.Parse(i), Index);
                     }
+                    Index++;
                 }
                 NumbersOfRow++;
             }

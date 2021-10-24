@@ -36,5 +36,9 @@ namespace LinkedList
                 Console.WriteLine("The value is not in the list");
             }
         }
+        public void Update(int row, int col, int value)
+        {
+            RowList[row].Update(value, col);
+        }
     }
 }

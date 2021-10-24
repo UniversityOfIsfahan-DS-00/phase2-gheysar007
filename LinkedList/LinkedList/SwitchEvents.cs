@@ -25,18 +25,21 @@ namespace LinkedList
 
             var KP = Console.ReadKey();
 
+            int Row;
+            int Column;
+            int Value;
             switch (KP.Key)
             {
                 case ConsoleKey.NumPad0:
                     Console.Clear();
                     Console.WriteLine("Enter Row: ");
-                    int Row = int.Parse(Console.ReadLine());
+                    Row = int.Parse(Console.ReadLine());
                     Console.Clear();
                     Console.WriteLine("Enter column: ");
-                    int Column = int.Parse(Console.ReadLine());
+                    Column = int.Parse(Console.ReadLine());
                     Console.Clear();
                     Console.WriteLine("Enter Value");
-                    int Value = int.Parse(Console.ReadLine());
+                    Value = int.Parse(Console.ReadLine());
                     Console.Clear();
                     Insert(Row, Column, Value);
                     break;
@@ -58,6 +61,20 @@ namespace LinkedList
                     Value = int.Parse(Console.ReadLine());
                     Console.Clear();
                     Search(Value);
+                    break;
+
+                case ConsoleKey.NumPad3:
+                    Console.Clear();
+                    Console.WriteLine("Enter Row: ");
+                    Row = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Console.WriteLine("Enter column: ");
+                    Column = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Console.WriteLine("Enter Value");
+                    Value = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Update(Row, Column, Value);
                     break;
                 default:
                     break;

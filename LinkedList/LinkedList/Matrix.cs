@@ -20,7 +20,7 @@ namespace LinkedList
                 _next = next;
             }
 
-            public int Value { get { return _value; } }
+            public int Value { get { return _value; }set { _value = value; } }
 
             public int ColumnIndex { get { return _columnIndex; } set { _columnIndex = value; } }
 
@@ -57,21 +57,25 @@ namespace LinkedList
         }
         public void Insert(int Value, int Column)
         {
-            if (Column == 0)
+            Node search = _head;
+            if (search == null)
             {
                 AddFirst(Value, Column);
-                Node search = _head.Next;
-                while (search != null)
+            }
+            else if (search.Next == null)
+            {
+                if (search.ColumnIndex < Column)
                 {
-                    search.ColumnIndex++;
-                    search = search.Next;
+                    AddLast(Value, Column);
+                }
+                else
+                {
+                    AddFirst(Value, Column);
                 }
             }
             else
             {
-                Node search = _head;
-                int index = 1;
-                while (index++ != Column)
+                while (search.Next.ColumnIndex < Column)
                 {
                     search = search.Next;
                 }
@@ -82,48 +86,29 @@ namespace LinkedList
                 }
                 search.Next = newest;
                 _size++;
-                search = search.Next.Next;
-                while (search != null)
-                {
-                    search.ColumnIndex++;
-                    search = search.Next;
-                }
             }
 
         }
         public void Delete(int column)
         {
-            if (column == 0)
+            Node search = _head;
+            if (search.ColumnIndex == column)
             {
+                
                 _head = _head.Next;
-                Node search = _head;
-                while (search != null)
-                {
-                    search.ColumnIndex--;
-                    search = search.Next;
-                }
             }
             else
             {
-                int index = 1;
-                Node search = _head;
-                while (index++ != column)
+                while (search.Next.ColumnIndex != column)
                 {
                     search = search.Next;
                 }
-                if (Size == column + 1)
+                search.Next = search.Next.Next;
+                if (search.Next == null)
                 {
                     _tail = search;
                 }
-                search.Next = search.Next.Next;
-                search = search.Next;
-                while (search != null)
-                {
-                    search.ColumnIndex--;
-                    search = search.Next;
-                }
             }
-
             _size--;
             if (Size == 0)
             {
@@ -143,5 +128,37 @@ namespace LinkedList
             }
             return -1;
         }
+        public void Update(int Value, int Column)
+        {
+            Node search = _head;
+            while (search.ColumnIndex != Column)
+            {
+                search = search.Next;
+            }
+            search.Value = Value;
+        }
     }
 }
+
+//insert
+//if (Column == 0)
+//{
+//    AddFirst(Value, Column);
+//}
+//else
+//{
+//    Node search = _head;
+//    int index = 1;
+//    while (index++ != Column)
+//    {
+//        search = search.Next;
+//    }
+//    Node newest = new Node(Value, Column, search.Next);
+//    if (newest.Next == null)
+//    {
+//        _tail = newest;
+//    }
+//    search.Next = newest;
+//    _size++;
+//}
+
