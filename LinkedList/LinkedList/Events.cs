@@ -40,5 +40,13 @@ namespace LinkedList
         {
             RowList[row].Update(value, col);
         }
+        public void Print(Boolean printType)
+        {
+            foreach (var item in RowList)
+            {
+                item.Print(printType);
+            }
+            
+        }
     }
 }

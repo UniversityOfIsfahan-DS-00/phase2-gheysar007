@@ -20,7 +20,7 @@ namespace LinkedList
                 _next = next;
             }
 
-            public int Value { get { return _value; }set { _value = value; } }
+            public int Value { get { return _value; } set { _value = value; } }
 
             public int ColumnIndex { get { return _columnIndex; } set { _columnIndex = value; } }
 
@@ -30,6 +30,8 @@ namespace LinkedList
         private Node _head = null;
         private Node _tail = null;
         private int _size = 0;
+        public int NumberOfCols { get; set; }
+        public int RowIndex { get; set; }
 
         public int Size { get { return _size; } }
         public void AddFirst(int value, int colIndex)
@@ -94,7 +96,7 @@ namespace LinkedList
             Node search = _head;
             if (search.ColumnIndex == column)
             {
-                
+
                 _head = _head.Next;
             }
             else
@@ -136,6 +138,69 @@ namespace LinkedList
                 search = search.Next;
             }
             search.Value = Value;
+        }
+        public void Print(Boolean printType)
+        {
+            if (!printType)
+            {
+                UsualPrint();
+            }
+            else
+            {
+                ShortPrint();
+            }
+            
+        }
+        void UsualPrint()
+        {
+            Node search = _head;
+            if (search == null)
+            {
+                for (int i = 0; i < NumberOfCols; i++)
+                {
+                    Console.Write("0\t");
+                }
+            }
+            else
+            {
+                int repet = 0;
+                int i = 0;
+                int index;
+                bool IsEnd = false;
+                while (repet++ <= Size + 1)
+                {
+                    if (search == null)
+                    {
+                        index = NumberOfCols;
+                        IsEnd = true;
+                    }
+                    else
+                    {
+                        index = search.ColumnIndex;
+                    }
+                    for (; i < index; i++)
+                    {
+                        Console.Write("0\t");
+                    }
+                    if (IsEnd)
+                    {
+                        break;
+                    }
+                    Console.Write(search.Value + "\t");
+                    search = search.Next;
+                    i++;
+                }
+            }
+            Console.WriteLine();
+        }
+        void ShortPrint()
+        {
+            Node search = _head;
+            while (search != null)
+            {
+                Console.WriteLine($"{RowIndex} {search.ColumnIndex} {search.Value}");
+                search = search.Next;
+            }
         }
     }
 }

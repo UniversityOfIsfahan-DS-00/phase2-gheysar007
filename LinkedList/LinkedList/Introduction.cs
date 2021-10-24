@@ -31,7 +31,9 @@ namespace LinkedList
                     }
                     Index++;
                 }
-                NumbersOfRow++;
+                RowList[NumbersOfRow].NumberOfCols = Index;
+                RowList[NumbersOfRow].RowIndex = NumbersOfRow++;
+
             }
 
             return RowList;

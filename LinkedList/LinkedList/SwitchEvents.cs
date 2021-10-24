@@ -14,14 +14,14 @@ namespace LinkedList
         {
             RowList = linklist;
 
-            Console.WriteLine("How can I help you?");
-            Console.WriteLine("Enter 0 to insert new element");
-            Console.WriteLine("Enter 1 to delete an element");
-            Console.WriteLine("Enter 2 to search for an element");
-            Console.WriteLine("Enter 3 to update an element");
-            Console.WriteLine("Enter 4 to print");
-            Console.WriteLine("Enter 5 to Save all");
-            Console.WriteLine("Enter * to Exit");
+            Console.Clear();
+            Console.WriteLine("Enter 0 to insert new element.");
+            Console.WriteLine("Enter 1 to delete an element.");
+            Console.WriteLine("Enter 2 to search for an element.");
+            Console.WriteLine("Enter 3 to update an element.");
+            Console.WriteLine("Enter 4 to print.");
+            Console.WriteLine("Enter 5 to Save all.");
+            Console.WriteLine("Enter * to Exit.");
 
             var KP = Console.ReadKey();
 
@@ -76,6 +76,17 @@ namespace LinkedList
                     Console.Clear();
                     Update(Row, Column, Value);
                     break;
+
+                case ConsoleKey.NumPad4:
+                    Console.Clear();
+                    Console.WriteLine("Enter 0 to print the matrix in its usual form.");
+                    Console.WriteLine("Enter 1 to print the matrix in short form.");
+                    KP = Console.ReadKey();
+                    Boolean PrintType = KP.Key != ConsoleKey.NumPad0;
+                    Console.Clear();
+                    Print(PrintType);
+                    break;
+
                 default:
                     break;
             }
