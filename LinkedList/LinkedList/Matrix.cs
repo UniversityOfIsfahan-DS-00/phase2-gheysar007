@@ -130,5 +130,18 @@ namespace LinkedList
                 _tail = null;
             }
         }
+        public int Search(int value)
+        {
+            Node search = _head;
+            while (search != null)
+            {
+                if (search.Value == value)
+                {
+                    return search.ColumnIndex;
+                }
+                search = search.Next;
+            }
+            return -1;
+        }
     }
 }

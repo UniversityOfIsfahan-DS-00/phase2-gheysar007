@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events.cs" />
     <Compile Include="Introduction.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="ReadingCSV.cs" />

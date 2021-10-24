@@ -8,8 +8,12 @@ namespace LinkedList
 {
     partial class Program
     {
-        public void SwitchEvents(Matrix[] RowList)
+        Matrix[] RowList;
+
+        public void SwitchEvents(Matrix[] linklist)
         {
+            RowList = linklist;
+
             Console.WriteLine("How can I help you?");
             Console.WriteLine("Enter 0 to insert new element");
             Console.WriteLine("Enter 1 to delete an element");
@@ -23,8 +27,8 @@ namespace LinkedList
 
             switch (KP.Key)
             {
-                case ConsoleKey.NumPad0: Console.Clear();
-                    
+                case ConsoleKey.NumPad0:
+                    Console.Clear();
                     Console.WriteLine("Enter Row: ");
                     int Row = int.Parse(Console.ReadLine());
                     Console.Clear();
@@ -34,7 +38,7 @@ namespace LinkedList
                     Console.WriteLine("Enter Value");
                     int Value = int.Parse(Console.ReadLine());
                     Console.Clear();
-                    RowList[Row].Insert(Value, Column);
+                    Insert(Row, Column, Value);
                     break;
 
                 case ConsoleKey.NumPad1:
@@ -45,12 +49,19 @@ namespace LinkedList
                     Console.WriteLine("Enter column: ");
                     Column = int.Parse(Console.ReadLine());
                     Console.Clear();
-                    RowList[Row].Delete(Column);
+                    Delete(Row, Column);
+                    break;
+
+                case ConsoleKey.NumPad2:
+                    Console.Clear();
+                    Console.WriteLine("Enter Value");
+                    Value = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    Search(Value);
                     break;
                 default:
                     break;
             }
-            Console.Clear();
 
         }
     }
