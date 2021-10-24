@@ -12,8 +12,6 @@ namespace LinkedList
         {
             Program Sample = new Program();
             Sample.SwitchEvents(Sample.Introduction(Sample.Reading()));
-
-            Console.ReadKey();
         }
     }
 }

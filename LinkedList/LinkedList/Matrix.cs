@@ -64,28 +64,30 @@ namespace LinkedList
             {
                 AddFirst(Value, Column);
             }
-            else if (search.Next == null)
+            else if(search.ColumnIndex > Column)
             {
-                if (search.ColumnIndex < Column)
-                {
-                    AddLast(Value, Column);
-                }
-                else
-                {
-                    AddFirst(Value, Column);
-                }
+                Node newest = new Node(Value, Column, search);
+                _head = newest;
+                _size++;
             }
-            else
+            else if(Column < _tail.ColumnIndex)
             {
                 while (search.Next.ColumnIndex < Column)
                 {
                     search = search.Next;
                 }
                 Node newest = new Node(Value, Column, search.Next);
-                if (newest.Next == null)
+                search.Next = newest;
+                _size++;
+            }
+            else
+            {
+                while (search.Next != null)
                 {
-                    _tail = newest;
+                    search = search.Next;
                 }
+                Node newest = new Node(Value, Column, null);
+                _tail = newest;
                 search.Next = newest;
                 _size++;
             }
